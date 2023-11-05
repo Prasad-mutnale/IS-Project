@@ -1,0 +1,6 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "editor.codeActionsOnSave": { "source.fixAll": true },
+    "editor.formatOnSave": false,
+    "java.compile.nullAnalysis.mode": "automatic",
+}
