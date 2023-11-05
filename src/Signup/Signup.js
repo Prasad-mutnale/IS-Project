@@ -10,6 +10,7 @@ import {
   Button,
   Text,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 
 import { Client, Account, ID } from 'appwrite';
@@ -29,10 +30,10 @@ const Signup = ({navigation}) =>  {
 
 
   const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('6545f5d4d8cb0b6f94c1');              // Your project ID
+  .setEndpoint('https://cloud.appwrite.io/v1')
+  .setProject('6547538a402b7c11d7b0');              // Your project ID
 
-  const account = new Account(client);
+const account = new Account(client);
 
 
 
@@ -43,13 +44,19 @@ const Signup = ({navigation}) =>  {
     //     .then(setAlert('User created successfully'))
     //     .catch(setAlert('User created successfully'));
     // setuid(uid++);
+
+    console.log('email', email);
+    console.log('password', password);
+    console.log('name', name);
+
     const promise = account.create(userId, email, password, name);
 
+    // const promise = account.create('test', 'test@gmail.com', 'test1234', 'test');
+
     promise.then(function (response) {
-      Alert.alert('Created successfully=======>>>');
+      Alert.alert('Created successfully!!!!');
       navigation.navigate('Signin');
       console.log(response); // Success
-
     }, function (error) {
       Alert.alert('error!!!!');
       console.log(error); // Failure
@@ -60,13 +67,16 @@ const Signup = ({navigation}) =>  {
 
   return (
 
-    <View style={styles.centerContainer}><Text style={{ color: 'white'}}>Sign Up</Text>
+    <View style={styles.centerContainer}>
 
-    {/* <Text>
+    <Text
+   style={styles.heading}
+    >
       Signup
-      </Text> */}
+      </Text>
     <TextInput
      placeholder="User Id"
+     value={userId}
      onChangeText={nameText => setuserId(nameText)}
       // eslint-disable-next-line react-native/no-inline-styles
       style={{
@@ -79,8 +89,9 @@ const Signup = ({navigation}) =>  {
       }}
 
     />
-    <TextInput
-      // eslint-disable-next-line react-native/no-inline-styles
+     <TextInput
+
+      value={name}
       style={{
         width: '90%',
         height: 55,
@@ -93,7 +104,8 @@ const Signup = ({navigation}) =>  {
       onChangeText={nameText => setName(nameText)}
     />
     <TextInput
-      // eslint-disable-next-line react-native/no-inline-styles
+
+      value={email}
       style={{
         width: '90%',
         height: 55,
@@ -106,7 +118,8 @@ const Signup = ({navigation}) =>  {
       onChangeText={nameEmail => setEmail(nameEmail)}
     />
     <TextInput
-      // eslint-disable-next-line react-native/no-inline-styles
+
+      value={password}
       style={{
         width: '90%',
         height: 55,
@@ -118,7 +131,26 @@ const Signup = ({navigation}) =>  {
       placeholder="Password"
       onChangeText={namePassword => setPassword(namePassword)}
     />
-    <Button style={styles.centerContainer} title="Sign Up" onPress={() => handleSubmit()} />
+    {/* <Button style={styles.centerContainer} title="Sign Up" onPress={() => handleSubmit()} />*/}
+
+
+    <TouchableOpacity
+            style={{
+              width: '90%',
+              height: 55,
+               borderWidth: 0.5,
+                borderRadius: 40,
+                backgroundColor:'black',
+                color:'#fff',
+                marginTop:30,
+                //  paddingLeft: 20,
+                 alignItems:'center',
+                 justifyContent:'center',
+            }}
+            onPress={() => handleSubmit()}
+            >
+              <Text style={{color:'#FFF', fontWeight: 'bold'}}>Create Account</Text>
+            </TouchableOpacity>
   </View>
 
   );
@@ -142,6 +174,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'green',
+    fontWeight: 'bold',
   },
   input: {
     // borderWidth: 1,
@@ -155,6 +188,14 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 30,
     paddingLeft: 20,
+  },
+
+  heading:{
+  fontWeight: 'bold',
+    fontSize: 30,
+    color: 'white',
+    marginBottom: 30,
+    textAlign: 'center',
   },
 });
 

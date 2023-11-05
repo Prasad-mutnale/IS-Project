@@ -14,7 +14,6 @@ import Signup from './src/Signup/Signup';
 import Signin from './src/SignIn/Signin';
 import Dash from './src/Dashboard/Dash';
 
-
 // export type RootStackParamList = {
 //   Signup:undefined,
 //   Sigin:undefined,
@@ -26,10 +25,10 @@ const App = () => {
   return (
     <NavigationContainer>
       {/* <Stack.Navigator initialRouteName="Signin"> */}
-      <Stack.Navigator initialRouteName="Signin">
+      <Stack.Navigator initialRouteName="Dash">
         <Stack.Screen name="Dash" component={Dash} options={{title:'Dashboard'}}/>
-        <Stack.Screen name="Signin" component={Signin} options={{title:'Sign In'}}/>
-        <Stack.Screen name="Signup" component={Signup} options={{title:'Sign Up'}}/>
+        <Stack.Screen name="Signin" component={Signin} options={{title:'Enter your Credentials'}}/>
+        <Stack.Screen name="Signup" component={Signup} options={{title:'Create your Account'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

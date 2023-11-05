@@ -21,8 +21,8 @@ const Signin = ({navigation}) => {
 
 
   const client = new Client()
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('6545f5d4d8cb0b6f94c1');              // Your project ID
+  .setEndpoint('https://cloud.appwrite.io/v1')
+  .setProject('6547538a402b7c11d7b0');           // Your project ID
 
   const account = new Account(client);
 
@@ -85,7 +85,7 @@ promise.then(function (response) {
 
 
 
-<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: 'green' }}><Text style={{ color: 'white'}}>Sign In</Text>
+<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',backgroundColor: 'green' }}><Text style={styles.heading}>Sign In</Text>
 
 {/* <Text style={styles.heading}>
   Login
@@ -135,10 +135,10 @@ onChangeText={txt=>setPassword(txt)}
             }}
             onPress={() => handleSubmit()}
             >
-              <Text style={{color:'#FFF'}}>Sign In</Text>
+              <Text style={{color:'#FFF', fontWeight: 'bold'}}>Sign In</Text>
             </TouchableOpacity>
     </View>
-    
+
   );
 };
 
@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
       marginBottom: 30,
       textAlign: 'center',
     },
+
     payBtn: {
       backgroundColor: 'white',
       paddingVertical: 10,
