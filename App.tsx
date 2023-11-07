@@ -13,6 +13,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Signup from './src/Signup/Signup';
 import Signin from './src/SignIn/Signin';
 import Dash from './src/Dashboard/Dash';
+import Home from './src/Scan/Home';
+import Scanner from './src/Scan/Scanner';
+import Generator from './src/Scan/Generator';
 
 // export type RootStackParamList = {
 //   Signup:undefined,
@@ -29,6 +32,9 @@ const App = () => {
         <Stack.Screen name="Dash" component={Dash} options={{title:'Dashboard'}}/>
         <Stack.Screen name="Signin" component={Signin} options={{title:'Enter your Credentials'}}/>
         <Stack.Screen name="Signup" component={Signup} options={{title:'Create your Account'}}/>
+        <Stack.Screen name="Home" component={Home} options={{title:'Choose the any one'}}/>
+        <Stack.Screen name="Scanner" component={Scanner} options={{title:'Scan the QR Code'}}/>
+        <Stack.Screen name="Generator" component={Generator} options={{title:'Generate your QR Code'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

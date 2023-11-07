@@ -71,7 +71,9 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 android {
     ndkVersion rootProject.ext.ndkVersion
 
+    
     compileSdkVersion rootProject.ext.compileSdkVersion
+
 
     namespace "com.awesomeproject"
     defaultConfig {
@@ -80,6 +82,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+         missingDimensionStrategy 'react-native-camera', 'general' //add this line
     }
     signingConfigs {
         debug {

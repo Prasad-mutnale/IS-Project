@@ -13,10 +13,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+// import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const Signin = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [userId, setuserId] = useState('');
   // const [ uid, setuid] = useState(2);
 
 
@@ -34,10 +39,14 @@ const Signin = ({navigation}) => {
 
 const promise = account.createEmailSession(email, password);
 
-promise.then(function (response) {
+promise.then(function (response)  {
     Alert.alert('Successfully logged in');
     console.log(response); // Success
-    navigation.navigate('Dash');
+    console.log('User name====>',response.userId);
+    setuserId(response.userId);
+    // let userId = response.userId;
+    // AsyncStorage.setItem('userId',userId);
+    navigation.navigate('Home',{'userId':userId});
 }, function (error) {
   let er = error;
   console.log('hhh', er);
@@ -208,6 +217,17 @@ const styles = StyleSheet.create({
 export default Signin;
 
 
+// function DetailsScreen({ route }) {
+//   // Fetch user details and display them here
+//   // route.params might contain user data passed from the login screen
+
+//   return (
+//     <View>
+//       <Text>User Details</Text>
+//       {/* Display user details here */}
+//     </View>
+//   );
+// }
 
 
 
